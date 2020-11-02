@@ -168,7 +168,7 @@ export default {
         const date = new Date(item.start)
 
         const options = { month: 'numeric', day: 'numeric' }
-        item.date = date.toLocaleDateString(undefined, options)
+        item.date = date.toLocaleDateString('nl-BE', options)
       })
     },
     async downloadIcal() {
