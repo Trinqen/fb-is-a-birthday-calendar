@@ -15,20 +15,89 @@
       to make a selection or make adjustments to the event titles or
       descriptions, continue following the next steps.
     </p>
+    <el-button @click="show = !show">{{
+      !show
+        ? `I don't know how to install a Chrome extension`
+        : `I missclicked the button`
+    }}</el-button>
+    <div class="explanation" v-if="show">
+      <div class="epl-step">
+        <h6>
+          Step 1<br />Follow the
+          <a
+            target="_blank"
+            href="https://chrome.google.com/webstore/detail/birthday-calendar-extract/imielmggcccenhgncmpjlehemlinhjjo"
+            >link</a
+          >
+          and download the Chrome extension
+        </h6>
+      </div>
+      <icon-arrow-right />
+      <div class="epl-step">
+        <h6>
+          Step 2<br />Click the puzzle icon in the top right corner of your
+          Chrome browser
+        </h6>
+      </div>
+      <icon-arrow-right />
+      <div class="epl-step">
+        <h6>Step 3<br />Click on the extension name</h6>
+      </div>
+      <icon-arrow-right />
+      <div class="epl-step">
+        <h6>
+          Step 4<br />Follow the instructions of the extension. You might need
+          to change the Facebook language to English (UK) or English (US)
+        </h6>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  components: {
+    IconArrowRight: () => import('~/components/icons/arrow-right'),
+  },
+  data() {
+    return {
+      show: false,
+    }
+  },
+}
 </script>
 
 <style lang="less" scoped>
 .step {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   height: 100%;
   padding: 0 15%;
+
+  > :not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .explanation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div:not(:last-child) {
+      margin-right: 10px;
+    }
+    > div:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .epl-step {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 100px;
+    }
+  }
 }
 </style>
